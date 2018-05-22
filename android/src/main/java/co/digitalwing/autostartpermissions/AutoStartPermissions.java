@@ -21,6 +21,10 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.app.AlertDialog;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+
+import static co.digitalwing.autostartpermissions.Defs.APP_NAME;
 
 public class AutoStartPermissions extends ReactContextBaseJavaModule {
     public AutoStartPermissions(ReactApplicationContext reactContext) {
@@ -64,8 +68,8 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
 
                     new AlertDialog.Builder(context)
                             .setIcon(context.getResources().getDrawable(android.R.drawable.ic_dialog_alert))
-                            .setTitle(String.format("Add %s to list", context.getString(R.string.app_name)))
-                            .setMessage(String.format("%s requires to be enabled/added in the list to function properly.\n", context.getString(R.string.app_name)))
+                            .setTitle(String.format("Add %s to list", getAppNameFromManifest(context)))
+                            .setMessage(String.format("%s requires to be enabled/added in the list to function properly.\n", getAppNameFromManifest(context)))
                             .setView(dontShowAgain)
                             .setPositiveButton("Go to settings", (o, d) -> {
                                 context.startActivity(intent);
@@ -79,6 +83,17 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
                     break;
                 }
             }
+        }
+    }
+
+    protected String getAppNameFromManifest(context) {
+        final ApplicationInfo appInfo;
+        try {
+            appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
+            return appInfo.metaData.getString(APP_NAME);
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.e(LOGTAG, "Failed to resolve app name from manifest", e);
+            return null;
         }
     }
 
