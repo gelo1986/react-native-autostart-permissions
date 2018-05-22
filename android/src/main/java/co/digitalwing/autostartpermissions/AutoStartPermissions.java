@@ -86,13 +86,12 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
         }
     }
 
-    protected String getAppNameFromManifest(context) {
+    private static String getAppNameFromManifest(Context context) {
         final ApplicationInfo appInfo;
         try {
             appInfo = context.getPackageManager().getApplicationInfo(context.getPackageName(), PackageManager.GET_META_DATA);
             return appInfo.metaData.getString(APP_NAME);
         } catch (PackageManager.NameNotFoundException e) {
-            Log.e(LOGTAG, "Failed to resolve app name from manifest", e);
             return null;
         }
     }
