@@ -1,0 +1,20 @@
+{
+  "name": "react-native-autostart-permissions",
+  "version": "0.1.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TemaKozyrev/react-native-autostart-permissions.git"
+  },
+  "keywords": [
+    "react-native",
+    "autostart",
+    "permissions"
+  ],
+  "author": "Tema Kozyrev <tema@tema.ws>",
+  "license": "MIT",
+  "peerDependencies": {
+    "react-native": ">=0.8.0"
+  }
+}
+
