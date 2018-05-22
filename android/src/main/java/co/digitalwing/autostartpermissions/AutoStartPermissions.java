@@ -53,6 +53,7 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
     {
         SharedPreferences settings = context.getSharedPreferences("ProtectedApps", Context.MODE_PRIVATE);
         boolean skipMessage = settings.getBoolean("skipAppListMessage", false);
+        boolean checked = false;
         if (!skipMessage)
         {
             final SharedPreferences.Editor editor = settings.edit();
@@ -83,6 +84,9 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
                     break;
                 }
             }
+        }
+        if (!checked) {
+            callback.invoke(true);
         }
     }
 
