@@ -9,6 +9,7 @@ import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.bridge.Callback;
 
+import android.app.Activity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -104,7 +105,7 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
     public void check(
             Callback completionCallback) {
 
-        ReactApplicationContext context = getReactApplicationContext();
+        Activity context = getCurrentActivity();
         StartPowerSaverIntent(context, completionCallback);
     }
 }
