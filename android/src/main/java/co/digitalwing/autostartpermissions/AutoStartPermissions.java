@@ -62,6 +62,7 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
             for (Intent intent : POWERMANAGER_INTENTS) {
                 if (context.getPackageManager().resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY) != null)
                 {
+                    checked = true;
                     AppCompatCheckBox dontShowAgain = new AppCompatCheckBox(context);
                     dontShowAgain.setText("Do not show again");
                     dontShowAgain.setOnCheckedChangeListener((compoundButton, b) -> {
