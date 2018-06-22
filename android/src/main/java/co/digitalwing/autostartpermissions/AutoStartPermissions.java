@@ -63,7 +63,7 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
                 {
                     checked = true;
                     AppCompatCheckBox dontShowAgain = new AppCompatCheckBox(context);
-                    dontShowAgain.setText("Do not show again");
+                    dontShowAgain.setText("Не показывать снова");
                     dontShowAgain.setOnCheckedChangeListener((compoundButton, b) -> {
                         editor.putBoolean("skipAppListMessage", compoundButton.isChecked());
                         editor.apply();
@@ -71,10 +71,10 @@ public class AutoStartPermissions extends ReactContextBaseJavaModule {
 
                     new AlertDialog.Builder(context)
                             .setIcon(context.getResources().getDrawable(android.R.drawable.ic_dialog_alert))
-                            .setTitle(String.format("Add %s to list", getAppNameFromManifest(context)))
-                            .setMessage(String.format("%s requires to be enabled/added in the list to function properly.\n", getAppNameFromManifest(context)))
+                            .setTitle(String.format("Добавить %s в исключения", getAppNameFromManifest(context)))
+                            .setMessage(String.format("%s необходимо разрешить отправку уведомлений и автостарт в настройках приложения.\n", getAppNameFromManifest(context)))
                             .setView(dontShowAgain)
-                            .setPositiveButton("Go to settings", (o, d) -> {
+                            .setPositiveButton("В настройки", (o, d) -> {
                                 context.startActivity(intent);
                                 callback.invoke(true);
                             })
