@@ -4,14 +4,14 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TemaKozyrev/react-native-autostart-permissions.git"
+    "url": "https://github.com/gelo1986/react-native-autostart-permissions.git"
   },
   "keywords": [
     "react-native",
     "autostart",
     "permissions"
   ],
-  "author": "Tema Kozyrev <tema@tema.ws>",
+  "author": "null",
   "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.8.0"
